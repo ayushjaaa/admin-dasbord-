@@ -5,8 +5,46 @@ import { FaPen, FaFilter, FaCalendarAlt, FaLink, FaUserPlus, FaShareAlt } from "
 import { HiViewGrid, HiOutlineViewList } from "react-icons/hi";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import {DndContext} from "@dnd-kit/core"
+import { useDispatch } from 'react-redux';
+import { moveTask } from '../redux/TodoSlice';
 const Home = () => {
   const tasks = useSelector((state)=>state.tasks.tasks)
+
+
+  tasks.Todo.map((elem)=>console.log(elem.id))
+const dispatch = useDispatch()
+  function findColumnofTask(TaskId,tasks){
+    for(const column in tasks){
+   
+      if(tasks[column].some(task=>String(task.id) === String(TaskId))){
+        return column;
+
+      }
+    }
+    return null
+  }
+
+
+  function handelDragEnd(event) {
+    const {active,over} = event
+    if(!over) return
+
+    const TaskId = active.id
+    console.log(TaskId)
+
+    const toColumn = over.id
+    console.log(toColumn)
+
+   
+    const fromColumn = findColumnofTask(TaskId,tasks)
+    console.log(fromColumn)
+
+      dispatch(moveTask({TaskId,fromColumn,toColumn}))
+    
+  }
+
+
 
   console.log(tasks)
    const navigate  = useNavigate()
@@ -76,9 +114,11 @@ const Home = () => {
       </div>
     </div>
       <div className="flex flex-col md:flex-row gap-4">
-        <TaskColumn className="bg-amber-600" title="To Do" tasks={tasks.Todo} color="border-purple-500"/>
-        <TaskColumn title="On Progress" tasks={tasks.inProgress} color="border-yellow-500" />
-        <TaskColumn title="Done" tasks={tasks.done} color="border-green-500" />
+        <DndContext onDragEnd={handelDragEnd}>
+        <TaskColumn id={"Todo"} className="bg-amber-600" title="To Do" tasks={tasks.Todo} color="border-purple-500"/>
+        <TaskColumn id={"inProgress"} title="On Progress" tasks={tasks.inProgress} color="border-yellow-500" />
+        <TaskColumn id={"done"} title="Done" tasks={tasks.done} color="border-green-500" />
+        </DndContext>
       </div>
     </div>
     </div>

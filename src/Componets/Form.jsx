@@ -30,10 +30,13 @@ const Form = () => {
       priority: "Low",
       comments: 0,
       files: 0,
+      status:form.value
     };
 
     dispatch(addTask({column:form.value,task:newTask}))
     navigate("/home")
+    localStorage.setItem('task',)
+    
   }
   return (
     <div>

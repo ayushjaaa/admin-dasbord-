@@ -1,7 +1,22 @@
 
+import { useDraggable } from '@dnd-kit/core';
+
+
 export default function TaskCard({ task }) {
+  const { setNodeRef, listeners, attributes, transform } = useDraggable({
+    id: task.id
+  });
+  const style = {
+    transform: transform
+      ? `translate(${transform.x}px, ${transform.y}px)`
+      : undefined
+  };
     return (
-      <div className="bg-white rounded-xl shadow-md p-4 mb-4 ">
+      <div ref={setNodeRef}
+      {...listeners}
+      {...attributes}
+      style={style}
+   className="bg-white rounded-xl shadow-md p-4 mb-4 ">
         <span className={`text-xs px-2 py-1 rounded-full font-semibold ${
           task.priority === "High" ? "bg-red-100 text-red-700" :
           task.priority === "Low" ? "bg-yellow-100 text-yellow-700" :

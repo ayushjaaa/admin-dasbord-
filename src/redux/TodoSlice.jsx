@@ -18,6 +18,15 @@ const taskSlice = createSlice({
             console.log(column,task)
             state.tasks[column].push(task);
           },
+          moveTask(state,action){
+            const {TaskId,fromColumn,toColumn} = action.payload
+            const taskIndex = state.tasks[fromColumn].findIndex((t)=>t.id === TaskId)
+            if(taskIndex === -1) return
+
+            const [task] = state.tasks[fromColumn].splice(taskIndex,1)
+            task.status = toColumn;
+            state.tasks[toColumn].push(task)
+          }
 
     }
 })
