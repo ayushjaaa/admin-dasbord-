@@ -35,7 +35,7 @@ const Form = () => {
 
     dispatch(addTask({column:form.value,task:newTask}))
     navigate("/home")
-    localStorage.setItem('task',)
+
     
   }
   return (

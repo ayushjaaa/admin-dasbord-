@@ -43,7 +43,8 @@ const dispatch = useDispatch()
       dispatch(moveTask({TaskId,fromColumn,toColumn}))
     
   }
-
+  const a =  localStorage.getItem("tata")
+    console.log(a)
 
 
   console.log(tasks)
