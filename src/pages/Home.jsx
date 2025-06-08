@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { moveTask } from '../redux/TodoSlice';
 const Home = () => {
   const tasks = useSelector((state)=>state.tasks.tasks)
-
+  const options = ['Option A', 'Option B', 'Option C'];
 
   tasks.Todo.map((elem)=>console.log(elem.id))
 const dispatch = useDispatch()
@@ -72,8 +72,9 @@ const dispatch = useDispatch()
         {/* Filter + Today */}
         <div className="flex gap-2">
           <button className="flex items-center gap-1 border rounded px-3 py-1 text-sm text-gray-700">
-            <FaFilter /> Filter
+            <FaFilter /> 
           </button>
+          
           <button className="flex items-center gap-1 border rounded px-3 py-1 text-sm text-gray-700">
             <FaCalendarAlt /> Today
           </button>
