@@ -10,7 +10,7 @@ A modern task management app (like Trello or Jira) built with React, Redux Toolk
 - ✅ Create and manage tasks
 - ✅ Drag & drop between Todo, In Progress, Done columns
 - ✅ Tasks saved in `localStorage` (auto persistence)
-- ✅ Responsive layout with Tailwind CSS
+- ✅ Responsive layout with Tailwind CSS  
 - ✅ Built using Redux Toolkit for state management
 
 ---
