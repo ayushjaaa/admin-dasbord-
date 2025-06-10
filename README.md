@@ -18,7 +18,7 @@ A modern task management app (like Trello or Jira) built with React, Redux Toolk
 ## 📁 Folder Structure
 
 src/
-│
+│ 
 ├── components/
 │ └── TaskColumn.jsx # Displays tasks inside columns
 │
