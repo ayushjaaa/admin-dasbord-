@@ -14,7 +14,7 @@ A modern task management app (like Trello or Jira) built with React, Redux Toolk
 - ✅ Built using Redux Toolkit for state management
 
 ---
-
+  
 ## 📁 Folder Structure
 
 src/
